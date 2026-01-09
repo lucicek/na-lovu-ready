@@ -134,6 +134,9 @@
   });
 
   document.addEventListener("keydown", e => {
+    // Pokud je fokus na inputu, nic neděj
+    if(document.activeElement.tagName === 'INPUT') return;
+    
     if(e.key.toLowerCase()==="v"){ toggleModal(); return; }
     if(!isModalOpen) return;
 

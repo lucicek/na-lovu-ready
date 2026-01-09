@@ -7,6 +7,9 @@ function playAudio(name) {
 }
 
 document.body.addEventListener('keydown', (event) => {
+  // Pokud je fokus na inputu, nic neděj
+  if(document.activeElement.tagName === 'INPUT') return;
+  
   if (event.key === '1') {
     window.location.href = `${window.AUDIO_BASE_PATH}`;
   } else if (event.key === '2') {
