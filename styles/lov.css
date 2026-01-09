@@ -1,0 +1,109 @@
+body {
+  font-family: Arial;
+  text-align: center;
+  margin: 0;
+  padding: 0;
+}
+.modal {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.1);
+  z-index: 1000;
+  justify-content: center;
+  align-items: center;
+}
+.modal-content {
+  background: linear-gradient(180deg, #001f3f, #001a35, #001033);
+  padding: 20px;
+  border-radius: 8px;
+  width: 60%;
+  max-width: 600px;
+  text-align: center;
+}
+.answers button {
+  display: block;
+  color: white;
+  margin: 10px auto;
+  padding: 10px 20px;
+  font-size: 16px;
+  box-sizing: border-box;
+  flex: 1;
+  background: linear-gradient(
+  to bottom,
+  #5dffcc 0%,
+  #2eccaa 45%,
+  #1f8f8b 100%
+);
+}
+
+.answers{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  z-index: 100;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  border-radius: 100px;
+}
+
+input {
+  width: 500px;
+  height: 60px;
+  padding: 10px;
+  text-align: center;
+  border: none;
+  background-color: #001f3f; /* dark blue */
+  color: white;
+  font-size: 40px;
+  border: 2px solid #03101e;
+  transition: background-color 0.2s;
+}
+
+input.active {
+  background-color: #3399ff; /* light blue */
+  color: black;
+}
+
+input.ctrl-highlight {
+  background-color: #ff3333; /* red */
+  color: white;
+}
+
+#question{
+  background: linear-gradient(180deg, #033d77, #022a55, #001033);
+  color: white;
+}
+
+.option.selected {
+  background: linear-gradient(
+  to bottom,
+  #4fd2ff 0%,
+  #1c9ed6 45%,
+  #0a5f8a 100%
+  ) !important;
+}
+
+.option.selected-lovec {
+  border: 4px solid red !important;
+}
+
+.option.correct {
+    background: linear-gradient(
+    to bottom,
+    #5dffb0 0%,
+    #2ecc71 45%,
+    #1f8f4e 100%
+  ) !important;
+  color: white !important;
+}

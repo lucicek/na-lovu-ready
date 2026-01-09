@@ -1,0 +1,29 @@
+.display.time {
+  background: linear-gradient(
+    to bottom,
+    #5dffb0 0%,
+    #2ecc71 45%,
+    #1f8f4e 100%
+  );
+  border-color: #9fffcc;
+  box-shadow:
+    inset 0 2px 6px rgba(255,255,255,0.4),
+    inset 0 -3px 6px rgba(0,0,0,0.4),
+    0 0 8px rgba(0,255,170,0.6);
+  transform: translateX(-10px);
+}
+
+.display {
+  border: 3px solid #9fdcff;
+  border-radius: 8px;
+  padding: 10px 22px;
+  font-size: 28px;
+  font-weight: bold;
+  color: white;
+  cursor: default;
+  box-shadow:
+    inset 0 2px 6px rgba(255,255,255,0.4),
+    inset 0 -3px 6px rgba(0,0,0,0.4),
+    0 0 8px rgba(0,180,255,0.6);
+  text-shadow: 0 2px 2px rgba(0,0,0,0.6);
+}
