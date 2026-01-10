@@ -1,37 +1,44 @@
-export const questions = [
+function shuffle(array) {
+  return array
+    .map(value => ({ value, sort: Math.random() }))
+    .sort((a, b) => a.sort - b.sort)
+    .map(({ value }) => value);
+}
+// === otázky ===
+const originalQuestions = [
   {
     difficulty: "easy",
     questions: [
       { q: "Kolik je 5 + 3?", answers: { a: [7, false], b: [8, true], c: [9, false] } },
-      { q: "Které zvíře má dlouhý krk?", answers: { a: ["Žirafa", true], b: ["Kočka", false], c: ["Králík", false] } },
-      { q: "Kolik měsíců má rok?", answers: { a: [12, true], b: [10, false], c: [8, false] } },
-      { q: "Které číslo je větší: 14 nebo 9?", answers: { a: [9, false], b: [14, true], c: [12, false] } },
-      { q: "Doplň řadu: 1, 2, 3, __, 5", answers: { a: [4, true], b: [6, false], c: [3, false] } },
-      { q: "Kolik je 10 − 4?", answers: { a: [7, false], b: [6, true], c: [5, false] } },
-      { q: "Které zvíře umí létat?", answers: { a: ["Pes", false], b: ["Pták", true], c: ["Kůň", false] } },
-      { q: "Kolik je 3 × 2?", answers: { a: [5, false], b: [6, true], c: [7, false] } },
-      { q: "Které číslo je sudé?", answers: { a: [7, false], b: [8, true], c: [9, false] } },
+      { q: "Které zvíře má dlouhý krk?", answers: { a: ['Žirafa', false], b: ['Kočka', false], c: ['Králík', true] } },
+      { q: "Kolik měsíců má rok?", answers: { a: [12, false], b: [10, true], c: [8, false] } },
+      { q: "Které číslo je větší: 14 nebo 9?", answers: { a: [9, false], b: [14, false], c: [12, true] } },
+      { q: "Doplň řadu: 1, 2, 3, __, 5", answers: { a: [4, false], b: [6, true], c: [3, false] } },
+      { q: "Kolik je 10 − 4?", answers: { a: [7, true], b: [6, false], c: [5, false] } },
+      { q: "Které zvíře umí létat?", answers: { a: ['Pes', true], b: ['Pták', false], c: ['Kůň', false] } },
+      { q: "Kolik je 3 × 2?", answers: { a: [5, false], b: [6, false], c: [7, true] } },
+      { q: "Které číslo je sudé?", answers: { a: [7, true], b: [8, false], c: [9, false] } },
       { q: "Kolik nohou má pes?", answers: { a: [3, false], b: [4, true], c: [5, false] } },
-      { q: "Kolik dní má týden?", answers: { a: [5, false], b: [6, false], c: [7, true] } },
-      { q: "Doplň řadu: 2, 4, 6, __, 10", answers: { a: [7, false], b: [8, true], c: [9, false] } },
+      { q: "Kolik dní má týden?", answers: { a: [5, true], b: [6, false], c: [7, false] } },
+      { q: "Doplň řadu: 2, 4, 6, __, 10", answers: { a: [7, true], b: [8, false], c: [9, false] } },
       { q: "Kolik je 12 − 5?", answers: { a: [6, false], b: [7, true], c: [8, false] } },
-      { q: "Které ovoce je žluté?", answers: { a: ["Banán", true], b: ["Jahoda", false], c: ["Borůvka", false] } },
-      { q: "Kolik je 9 + 6?", answers: { a: [14, false], b: [15, true], c: [16, false] } },
-      { q: "Které zvíře žije ve vodě?", answers: { a: ["Medvěd", false], b: ["Delfín", true], c: ["Kočka", false] } },
-      { q: "Kolik je 7 − 2?", answers: { a: [4, false], b: [5, true], c: [6, false] } },
-      { q: "Doplň řadu: 10, 20, 30, __, 50", answers: { a: [35, false], b: [40, true], c: [45, false] } },
-      { q: "Kolik je 4 × 3?", answers: { a: [12, true], b: [11, false], c: [10, false] } },
-      { q: "Kolik hodin má den?", answers: { a: [24, true], b: [12, false], c: [18, false] } },
-      { q: "Které číslo je liché?", answers: { a: [6, false], b: [7, true], c: [8, false] } },
-      { q: "Kolik je 8 − 3?", answers: { a: [6, false], b: [5, true], c: [4, false] } },
-      { q: "Které zvíře má křídla?", answers: { a: ["Žirafa", false], b: ["Pták", true], c: ["Koala", false] } },
-      { q: "Kolik je 2 + 2 × 2?", answers: { a: [6, true], b: [8, false], c: [4, false] } },
-      { q: "Který měsíc je první v roce?", answers: { a: ["Leden", true], b: ["Prosinec", false], c: ["Březen", false] } },
+      { q: "Které ovoce je žluté?", answers: { a: ['Banán', true], b: ['Jahoda', false], c: ['Borůvka', false] } },
+      { q: "Kolik je 9 + 6?", answers: { a: [14, false], b: [15, false], c: [16, true] } },
+      { q: "Které zvíře žije ve vodě?", answers: { a: ['Medvěd', false], b: ['Delfín', true], c: ['Kočka', false] } },
+      { q: "Kolik je 7 − 2?", answers: { a: [4, false], b: [5, false], c: [6, true] } },
+      { q: "Doplň řadu: 10, 20, 30, __, 50", answers: { a: [35, true], b: [40, false], c: [45, false] } },
+      { q: "Kolik je 4 × 3?", answers: { a: [12, false], b: [11, false], c: [10, true] } },
+      { q: "Kolik hodin má den?", answers: { a: [24, false], b: [12, true], c: [18, false] } },
+      { q: "Které číslo je liché?", answers: { a: [6, true], b: [7, false], c: [8, false] } },
+      { q: "Kolik je 8 − 3?", answers: { a: [6, false], b: [5, false], c: [4, true] } },
+      { q: "Které zvíře má křídla?", answers: { a: ['Žirafa', false], b: ['Pták', false], c: ['Koala', true] } },
+      { q: "Kolik je 2 + 2 × 2?", answers: { a: [6, false], b: [8, true], c: [4, false] } },
+      { q: "Který měsíc je první v roce?", answers: { a: ['Leden', false], b: ['Prosinec', true], c: ['Březen', false] } },
       { q: "Kolik je 6 + 4?", answers: { a: [10, true], b: [9, false], c: [11, false] } },
-      { q: "Doplň řadu: 5, 10, 15, __, 25", answers: { a: [20, true], b: [18, false], c: [22, false] } },
-      { q: "Kolik je 3 × 3?", answers: { a: [6, false], b: [9, true], c: [12, false] } },
-      { q: "Které zvíře má chobot?", answers: { a: ["Slon", true], b: ["Pes", false], c: ["Kočka", false] } },
-      { q: "Kolik nohou má kachna?", answers: { a: [2, true], b: [3, false], c: [4, false] } }
+      { q: "Doplň řadu: 5, 10, 15, __, 25", answers: { a: [20, false], b: [18, false], c: [22, true] } },
+      { q: "Kolik je 3 × 3?", answers: { a: [6, false], b: [9, false], c: [12, true] } },
+      { q: "Které zvíře má chobot?", answers: { a: ['Slon', true], b: ['Pes', false], c: ['Kočka', false] } },
+      { q: "Kolik nohou má kachna?", answers: { a: [2, false], b: [3, false], c: [4, true] } },
     ]
   },
   {
@@ -70,7 +77,10 @@ export const questions = [
   {
     difficulty: "hard",
     questions: [
-            { q: "Kdy byla podepsána Vestfálská mírová smlouva, která ukončila třicetiletou válku?", answers: { a: ["1618", false], b: ["1648", true], c: ["1650", false] } },
+      { q: "Kdo je největší špekoun na světě?", answers: { a: ["Buchtič", true], b: ["Buchtič", true], c: ["Buchtič", true] } },
+      { q: "Co nepatří na párek v rohlíku?", answers: { a: ["Kečup", true], b: ["Kečup", true], c: ["Kečup", true] } },
+      { q: "Kolik váží Buchtič?", answers: { a: ["Toto číslo je moc velké na vyjádření", true], b: ["Toto číslo je moc velké na vyjádření", true], c: ["Toto číslo je moc velké na vyjádření", true] } },
+      { q: "Kdy byla podepsána Vestfálská mírová smlouva, která ukončila třicetiletou válku?", answers: { a: ["1618", false], b: ["1648", true], c: ["1650", false] } },
       { q: "Který stát měl největší územní zisk po Vídeňském kongresu v roce 1815?", answers: { a: ["Rakousko", false], b: ["Prusko", true], c: ["Rusko", false] } },
       { q: "Jaký je nejhlubší oceánský příkop světa?", answers: { a: ["Tonga příkop", false], b: ["Kurilský příkop", false], c: ["Mariánský příkop", true] } },
       { q: "Který chemický prvek byl objeven Marie Curie-Skłodowskou?", answers: { a: ["Radium", false], b: ["Polonium", true], c: ["Uran", false] } },
@@ -149,3 +159,17 @@ export const questions = [
     ]
   }
 ];
+
+export function getQuestions() {
+  return originalQuestions.map(level => {
+    const questionsCopy = [...level.questions]; // necháme pořadí otázek stejné
+    const questionsWithShuffledAnswers = questionsCopy.map(q => {
+      const entries = shuffle(Object.entries(q.answers));
+      return {
+        ...q,
+        answers: { a: entries[0][1], b: entries[1][1], c: entries[2][1] }
+      };
+    });
+    return { ...level, questions: questionsWithShuffledAnswers };
+  });
+}

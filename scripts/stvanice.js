@@ -1,7 +1,10 @@
-import { questions } from "./questions.js";
+import { getQuestions } from "./questions.js";
 import { initializeApp } from "https://www.gstatic.com/firebasejs/12.7.0/firebase-app.js";
 import { getDatabase, ref, set, onValue, get } from "https://www.gstatic.com/firebasejs/12.7.0/firebase-database.js";
 import { stopwatch } from "./stopwatch.js";
+
+const questions = getQuestions(); // teď bude pokaždé nové shuffle
+console.log(questions);
 
 stopwatch(
   120,
